@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Guerrilla&display=swap");
+
+body {
+  background-image: url("../img/back.jpg");
+  font-family: "Poppins", serif;
+  height: 2000px;
+}
+
+#navkh {
+  align-items: center;
+  font-weight: bold;
+  margin-right: 15px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.nav-link {
+  color: white;
+}
+.nav-link:hover {
+  background: rgb(58, 138, 180);
+  background-color: black solid 2px;
+  border: 2px solid rgb(165, 162, 162);
+  background: linear-gradient(
+    90deg,
+    rgba(58, 138, 180, 0.3) 0%,
+    rgba(237, 69, 252, 3) 100%
+  );
+  border-radius: 10px;
+  color: white;
+}
+
+#round {
+  width: 80%;
+  height: 70vh;
+  border-radius: 20px;
+}
+h3 {
+  color: white;
+}
+.navsh {
+  width: 98%;
+  justify-content: space-between;
+  display: flex;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.199);
+  margin: 10px;
+  position: fixed;
+  z-index: 100;
+  font-weight: bold;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 20px;
+}
+
+.display-4 {
+  text-align: center;
+}
+
+#carouselExampleIndicators {
+  width: 50%;
+  margin-left: 25%;
+  padding-top: 250px;
+}
+
+.search {
+  color: white;
+  padding-top: 100px;
+  width: 30%;
+  margin-left: 35%;
+}
+
+.course {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.card .card-img-top3 {
+  height: 190px;
+}
+
+.card {
+  margin-top: 100px;
+  margin-bottom: -75px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card .card-img-top3 {
+  height: 190px;
+}
+
+.card h5 {
+  font-size: 23px;
+  font-weight: 40px;
+}
+.card p {
+  font-size: 12px;
+}
+
+.card .btn {
+  font-size: 15px;
+}
+
+@media (max-width: 992px) {
+  #carouselExampleIndicators {
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  .search {
+    width: 50%;
+    margin-left: 25%;
+  }
+
+  .course {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    margin: 20px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .navsh {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo {
+    margin: 10px 0;
+  }
+
+  #navkh {
+    margin-right: 0;
+  }
+
+  #carouselExampleIndicators {
+    width: 100%;
+    margin-left: 0;
+    padding-top: 170px;
+  }
+
+  .search {
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  .course {
+    gap: 20px;
+  }
+
+  .card {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .nav-link {
+    font-size: 14px;
+  }
+
+  .card h5 {
+    font-size: 18px;
+  }
+
+  .card p {
+    font-size: 10px;
+  }
+
+  .card .btn {
+    font-size: 12px;
+  }
+
+  .search {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  #carouselExampleIndicators {
+    padding-top: 170px;
+  }
+}

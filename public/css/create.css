@@ -1,0 +1,25 @@
+.fs-1 {
+  font-family: "Bungee Spice", serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 9px;
+}
+
+.mb-3 textarea,
+.mb-3 input {
+  background-color: white;
+  border: 1.5px solid #4d79b7;
+  border-radius: 0.5rem;
+  box-shadow: 2.5px 3px 0 #4d79b7;
+  outline: none;
+  transition: ease 0.25s;
+}
+.mb-3 textarea,
+.mb-3 input :focus {
+  box-shadow: 5.5px 7px 0 #4d79b7;
+}
+
+.mb-3 textarea {
+  overflow: hidden;
+  resize: none;
+}

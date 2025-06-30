@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+    rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/home.css" type="text/css" />
+</head>
+
+<body>
+  <nav class="navsh">
+    <img class="logo" src="img/logozin.webp" alt="logo" />
+    <ul class="nav justify-content-end" id="navkh">
+
+      <% if (user && user.email !=="Not logged in" ) { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/home" style="color: red;">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/usercourse">COURSE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">LOGOUT</a>
+        </li>
+        <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/home" style="color: red;">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/usercourse">COURSE</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/aboutus">ABOUT US</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">LOGIN</a>
+          </li>
+
+          <% } %>
+    </ul>
+  </nav>
+
+  <div class="container text-center">
+    <div class="row mt-2">
+      <div class="col">
+        <div id="carouselExampleAutoplaying m-3" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img id="round" src="img/pics.png" class="d-block w-100" alt="SLIDE">
+            </div>
+            <div class="carousel-item">
+              <img id="round" src="img/pica.jpeg" class="d-block w-100" alt="SLIDE">
+            </div>
+            <div class="carousel-item">
+              <img id="round" src="img/he.png" class="d-block w-100" alt="SLIDE">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <div class="col">
+        <h3 class="mt-3">
+          WELCOME BACK , <span style="font-family: sans-serif; padding: 10px; color: aqua; text-transform: uppercase;">
+            <%= user.firstname %>
+          </span>
+        </h3>
+        <p>We're excited to help you unlock your full potential.</p>
+        <p>With 168 expert-led courses available at your fingertips, the opportunities are endless. Whether you’re
+          learning for a promotion, launching a new career, or simply exploring your curiosity — we’ve got you covered.
+        </p>
+        <% if (user && user.email !=="Not logged in" ) { %>
+          <p>Ready to dive in?</p>
+          <% } else { %>
+            <p style="color: aqua;">Didn't have an account?</p>
+            <center><a style="width: 50%;" href="/register" id="lgin" class="btn btn-primary">Register</a></center>
+            <% } %>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="course_info" style="padding-top: 180px; ">
+    <h4 class="mb-3" style="text-align: center; color: #ffffff;  font-size: 30px; font-weight: 600;">
+      Course Outline
+    </h4>
+    <hr style="width: 200px; margin: 0 auto 24px auto; border-top: 5px solid #ffffff;">
+    <div class="course-outline"
+      style="padding-top: 20px; color: #ffffff; border-radius: 15px; box-shadow: 0 8px 20px rgba(0, 255, 255, 0.1);">
+
+      <h1>What You’ll Learn</h1>
+      <hr />
+      <ul>
+        <li>Understand the fundamentals of modern web development</li>
+        <li>Build responsive websites with HTML, CSS, and JavaScript</li>
+        <li>Create dynamic web apps using Node.js and Express</li>
+        <li>Manage data with MongoDB and perform CRUD operations</li>
+        <li>Deploy applications to cloud platforms like Vercel or Heroku</li>
+        <li>Integrate third-party APIs and external services</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="course-logos-section my-5" style="padding-top: 80px;">
+    <h4 class="mb-3" style="text-align: center; color: #ffffff; font-size: 30px; font-weight: 600;">
+      Popular Course Technologies
+    </h4>
+    <hr style="width: 300px; margin: 0 auto 24px auto; border-top: 5px solid #ffffff;">
+    <div class="course-logos-wrapper">
+      <div class="course-logos">
+        <!-- Original Logos -->
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"alt="JavaScript">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" class="white-bg">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" alt="NPM">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" alt="Visual Studio Code">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-original.svg" alt="Heroku">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg" alt="Ruby">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg" alt="Swift">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" alt="SQLite">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg" alt="Nginx">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg" alt="Apache">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
+        <img src="https://github.com/devicons/devicon/blob/v2.16.0/icons/archlinux/archlinux-original.svg" alt="Arch Linux">
+        
+
+      </div>
+      <center><a style="width: 50%;" href="/usercourse" id="lgin" class="btn btn-primary" >Explore Now</a></center>
+    </div>
+  </div>
+  <style>
+    @keyframes scroll-course-logos {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .course-logos-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .course-logos {
+      display: inline-block;
+      white-space: nowrap;
+      min-width: 200%;
+    }
+  </style>
+
+  <div class="trusted-by-section my-5" style="padding-top: 150px;">
+    <h4 class="mb-3" style="text-align: center; color: #ffffff;  font-size: 30px; font-weight: 600;">
+      Trusted by leading companies
+    </h4>
+    <hr style="width: 200px; margin: 0 auto 24px auto; border-top: 5px solid #ffffff;">
+    <div class="trusted-logos-wrapper d-flex justify-content-center" style="overflow: hidden; position: relative; padding-top: 50px;">
+      <div class="trusted-logos d-flex align-items-center justify-content-center" style="white-space: nowrap;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google"
+        style="height: 50px; margin-right: 40px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft"
+        style="height: 50px; margin-right: 40px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon"
+        style="height: 50px; margin-right: 40px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix"
+        style="height: 50px; margin-right: 40px;">
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .trusted-logos {
+      display: inline-block;
+      min-width: 200%;
+    }
+  </style>
+
+  <footer class="footer mt-auto py-3 text-white" style="font-family: 'Poppins', serif; background: none;">
+    <div class="container text-center">
+        <span>&copy; <%= new Date().getFullYear() %> 168-Course. All rights reserved.</span>
+        <br />
+        <a href="/aboutus" class="text-info mx-2">About Us</a> |
+        <a href="/contact" class="text-info mx-2">Contact</a> |
+        <a href="/privacy" class="text-info mx-2">Privacy Policy</a>
+    </div>
+</footer>
+
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+
+</body>

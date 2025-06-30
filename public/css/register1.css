@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Guerrilla&display=swap');
+body {
+    background-color: #0c1326;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    font-family: "Poppins", serif;
+    color: white;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}
+
+#navkh {
+  padding: 20px;
+  align-items: center;
+  font-weight: bold;
+  margin-right: 15px;
+  gap: 20px;
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-link:hover {
+  color: red;
+  border-radius: 10px;
+}
+
+.navsh {
+  width: 100%;
+  justify-content: space-between;
+  font-family: 'Poppins', serif;
+  gap: 20px;
+  display: flex;
+  border-radius: 5px;
+  background-color: rgb(2, 24, 47);
+  /* background-color: rgba(255, 255, 255, 0.199); */
+  padding-top: -10px;
+  position: fixed;
+  z-index: 1;
+  font-weight: bold;
+  padding: 0 40px;
+  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.5)
+}
+
+.logo {
+  width: 60px;
+  border-radius: 50px;
+  height: 60px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 20px;
+}
+.register {
+    padding-top: 5rem;
+    margin-top: 50px;
+    color: white;
+    text-align: center;
+    width: 700px;
+    background-color: rgb(0, 0, 74, 0.8);
+    box-shadow: 0px 2px 4px darkblue;
+    border-radius: 15px;
+   
+
+}
+
+.register_content {
+    width: 100%;
+    border: 1.5px solid white;
+    border-radius: 15px;
+    padding: 20px;
+    color: white;
+    
+}
+.register_header{
+    
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 14px;
+    background-color: rgb(0, 0, 74, 0.8);
+}
+form{
+    padding: 0px;
+    background-color: transparent;
+}
+.mb-3{
+    padding: 5px;
+    color: white;
+    display: flex;
+}
+.mb-3 input{
+    background-color: transparent;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    height: 40px;
+    color: white;
+}
+label{
+    width: 300px; text-align: start; padding-top: 10px; padding-right: 20px;
+}
+.form-control::placeholder {
+    color: white;
+    opacity: 1;
+}
+button{
+    width:150px;
+    background-color: darkblue;
+}
+i{
+    font-size: 20px; 
+    padding-right: 15px;
+    padding-top: 15px;
+}
+.or_continue{
+    padding-top: 20px;
+    text-align: center;
+}
+.or_continue i:hover{
+    color: blue;
+}
+/* Media Queries for Phone Screens (below 480px) */
+@media screen and (max-width: 430px) {
+
+    /* Navigation Bar - Stack items vertically */
+    .navsh {
+        flex-direction: column;
+        gap: 5px; /* Reduce space between items */
+        align-items: center; /* Center-align items */
+        width: 100%; /* Ensure nav bar spans full width */
+    }
+    .navsh a{
+        font-size: 10px;
+    }
+
+    /* Logo size adjustments */
+    .logo {
+        width: 50px; /* Smaller logo */
+        height: 50px;
+        margin-left: 0; /* Remove unnecessary left margin */
+        margin-top: 10px;
+    }
+
+    /* Registration Form */
+    .register {
+        width: 90%; /* Make form width take up more space */
+        margin-top: 15px; /* Reduce top margin */
+        margin-top: 150px;
+    }
+
+    .register_header {
+        padding-top: 10px; /* Adjust padding for header */
+        padding-bottom: 10px;
+    }
+
+    .register_content {
+        padding: 15px; /* Adjust padding */
+    }
+
+    /* Form Input Fields */
+    .mb-3 input {
+        padding: 8px; /* Make inputs more compact */
+        width: 100%; /* Make inputs take up full width */
+    }
+
+    /* Button Styling */
+    button {
+        width: 120px; /* Make buttons smaller */
+        font-size: 14px; /* Adjust text size */
+    }
+
+    /* Adjust Font Sizes for Mobile */
+    .nav-link {
+        font-size: 14px; /* Smaller font size for links */
+    }
+
+    /* Add margins for links */
+    .nav-link {
+        padding: 8px; /* Adjust link padding */
+    }
+
+    /* Adjust icon size */
+    i {
+        font-size: 18px; /* Slightly smaller icons */
+    }
+
+    /* 'Or continue' text styling */
+    .or_continue {
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    /* Hover effects */
+    .or_continue i:hover {
+        color: blue;
+    }
+}
+
+@media screen and (max-width: 490px) {
+
+    /* Navigation Bar - Stack items vertically */
+    .navsh {
+        flex-direction: column;
+        gap: 5px; /* Reduce space between items */
+        align-items: center; /* Center-align items */
+        width: 100%; /* Ensure nav bar spans full width */
+    }
+    .navsh a{
+        font-size: 10px;
+    }
+
+    /* Logo size adjustments */
+    .logo {
+        width: 50px; /* Smaller logo */
+        height: 50px;
+        margin-left: 0; /* Remove unnecessary left margin */
+        margin-top: 10px;
+    }
+
+    /* Registration Form */
+    .register {
+        width: 90%; /* Make form width take up more space */
+        margin-top: 15px; /* Reduce top margin */
+        margin-top: 150px;
+    }
+
+    .register_header {
+        padding-top: 10px; /* Adjust padding for header */
+        padding-bottom: 10px;
+    }
+
+    .register_content {
+        padding: 15px; /* Adjust padding */
+    }
+
+    /* Form Input Fields */
+    .mb-3 input {
+        padding: 8px; /* Make inputs more compact */
+        width: 100%; /* Make inputs take up full width */
+    }
+
+    /* Button Styling */
+    button {
+        width: 120px; /* Make buttons smaller */
+        font-size: 14px; /* Adjust text size */
+    }
+
+    /* Adjust Font Sizes for Mobile */
+    .nav-link {
+        font-size: 14px; /* Smaller font size for links */
+    }
+
+    /* Add margins for links */
+    .nav-link {
+        padding: 8px; /* Adjust link padding */
+    }
+
+    /* Adjust icon size */
+    i {
+        font-size: 18px; /* Slightly smaller icons */
+    }
+
+    /* 'Or continue' text styling */
+    .or_continue {
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    /* Hover effects */
+    .or_continue i:hover {
+        color: blue;
+    }
+}

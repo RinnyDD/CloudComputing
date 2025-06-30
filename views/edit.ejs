@@ -1,0 +1,71 @@
+<%- include('header') %>
+<p class="fs-1" style="padding: 100px 50px">EDIT COURSE</p>
+<form
+  action="/courses/edit/<%= course.id %>"
+  method="POST"
+  style="margin-top: -8%"
+>
+  <div class="mb-3">
+    <label class="form-label"
+      >Title:
+      <input
+        class="form-control"
+        type="text"
+        name="title"
+        value="<%= course.title %>"
+        required /></label
+    ><br />
+  </div>
+  <div class="mb-3">
+    <label class="form-label"
+      >Description:
+      <textarea
+        cols="50"
+        rows="4"
+        class="form-control"
+        name="description"
+        required
+      >
+<%= course.description %></textarea
+      ></label
+    ><br />
+  </div>
+  <div class="mb-3">
+    <label class="form-label"
+      >Author:
+      <input
+        class="form-control"
+        type="text"
+        name="author"
+        value="<%= course.author %>"
+        required /></label
+    ><br />
+  </div>
+  <div class="mb-3">
+    <label class="form-label"
+      >Price:
+      <input
+        class="form-control"
+        type="number"
+        name="price"
+        value="<%= course.price %>"
+        required /></label
+    ><br />
+  </div>
+  <div class="mb-3">
+    <label class="form-label"
+      >Image URL:
+      <input
+        class="form-control"
+        size="60"
+        type="text"
+        name="image"
+        value="<%= course.image %>"
+        required /></label
+    ><br />
+  </div>
+  <button class="btn btn-primary mb-4" type="submit" style="margin-left: 2%">
+    Update
+  </button>
+</form>
+<%- include('footer') %>

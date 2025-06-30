@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Guerrilla&display=swap');
+body {
+    background-image: url(/img/back.jpg);
+    background-size: auto;
+    background-repeat: no-repeat;
+    margin: 0;
+    font-family: "Poppins", serif;
+   
+}
+
+.container{
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}
+
+
+.logo{
+    width: 60px;
+    border-radius: 50px;
+    height: 60px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+  
+  /* Course Details */
+  .container {
+    padding: 30px;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .card-body {
+    padding: 30px;
+  }
+  
+  .card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .card-title {
+    font-size: 28px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .card-text {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  h5 {
+    color: #007bff;
+  }
+  
+  strong {
+    font-weight: bold;
+  }
+  
+  .payment-methods {
+    margin-top: 30px;
+  }
+  
+  .payment-methods button {
+    margin-right: 15px;
+  }
+  
+  .payment-methods .btn {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+  
+  /* Modal Styling */
+  .modal-content {
+    border-radius: 10px;
+  }
+  
+  .modal-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .modal-body {
+    padding: 30px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    margin-bottom: 15px;
+  }
+  
+  .modal-footer {
+    justify-content: center;
+  }
+  
+  h2.text-center {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  h5 {
+    font-size: 20px;
+  }
+  
+  img.img-fluid {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  
+  /* Additional media queries for responsive design */
+  @media (max-width: 767px) {
+    .card-body {
+      padding: 20px;
+    }
+  
+    .card-title {
+      font-size: 24px;
+    }
+  }
+  

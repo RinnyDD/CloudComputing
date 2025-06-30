@@ -1,0 +1,25 @@
+<%- include('header') %>
+<p class="fs-1 " style="padding: 100px 50px ">
+    Create NEW
+</p>
+<form action="/courses/create" method="POST" enctype="multipart/form-data" style="margin-top: -8%;">
+    <div class="mb-3">
+        <label class="form-label">Title: <input class="form-control" type="text" name="title" required></label><br>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Description: <input class="form-control"  name="description" required></input></label><br>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Author: <input class="form-control" type="text" name="author" required></label><br>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Price: <input class="form-control" type="number" name="price" required></label><br>
+    </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">Product Image</label>
+        <input type="file" class="form-control" name="image" id="image" accept="image/*">
+      </div>
+ 
+  <button type="submit" id="Edit" class="btn btn-primary mb-4">Submit</button>
+</form>
+<%- include('footer') %>

@@ -1,0 +1,319 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: #0c1326;
+  background-size: cover;
+  font-family: "Poppins", serif;
+  color: white;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 14rem;
+}
+
+#logotxt {
+  background: linear-gradient(90deg, #ff7a18, #af002d, #319197);
+  -webkit-background-clip: text;
+  font-size: 2rem;
+  -webkit-text-fill-color: transparent;
+}
+
+#navkh {
+  padding: 20px;
+  align-items: center;
+  font-weight: bold;
+  margin-right: 15px;
+  gap: 20px;
+}
+
+.nav-link {
+  color: white;
+}
+
+.nav-link:hover {
+  color: red;
+  border-radius: 10px;
+}
+
+.navsh {
+  width: 100%;
+  justify-content: space-between;
+  gap: 20px;
+  display: flex;
+  border-radius: 5px;
+  background-color: rgb(2, 24, 47);
+  /* background-color: rgba(255, 255, 255, 0.199); */
+  padding-top: -10px;
+  position: fixed;
+  z-index: 1;
+  font-weight: bold;
+  padding: 0 40px;
+  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.5)
+}
+
+.logo {
+  width: 60px;
+  border-radius: 50px;
+  height: 60px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 20px;
+}
+
+.container-fluid {
+  justify-content: center;
+  display: flex;
+  background-color: rgba(240, 255, 255, 0.181);
+}
+
+h3 {
+  color: white;
+  font-weight: bold;
+  display: grid;
+}
+
+.col {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: grid;
+}
+
+.course-outline {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  color: #ffffff;
+  border-radius: 15px;
+  border: #00ffff 2px solid;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.course-outline h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #00ffff;
+  text-align: center;
+}
+
+.course-outline hr {
+  border: none;
+  height: 2px;
+  background: #00ffff;
+  width: 60px;
+  margin: 10px auto 30px auto;
+}
+
+.course-outline ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.course-outline li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.course-outline li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #00ffff;
+  font-weight: bold;
+}
+
+#round {
+  border-radius: 25px;
+}
+
+#carouselExampleAutoplaying {
+  height: 100%;
+  min-width: 800px;
+  border-radius: 20px;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.slide {
+  width: 90%;
+  gap: 5%;
+  overflow: hidden;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+#lgin {
+  --clr-font-main: hsla(0 0% 20% / 100);
+  --btn-bg-1: hsla(194 100% 69% / 1);
+  --btn-bg-2: rgb(11, 99, 241);
+  --btn-bg-color: hsla(360 100% 100% / 1);
+  --radii: 0.5em;
+  cursor: pointer;
+  padding: 0.9em 1.4em;
+  max-width: 200px;
+
+  font-size: var(--size, 1rem);
+  font-weight: 500;
+  transition: 0.8s;
+  background-size: 280% auto;
+  background-image: linear-gradient(325deg,
+      var(--btn-bg-2) 0%,
+      var(--btn-bg-1) 55%,
+      var(--btn-bg-2) 90%);
+  border: none;
+  border-radius: 20px;
+  color: var(--btn-bg-color);
+  
+}
+
+#lgin:hover {
+  background-position: right top;
+}
+
+#lgin:is(:focus, :focus-visible, :active) {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--btn-bg-color), 0 0 0 6px var(--btn-bg-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #lgin {
+    transition: linear;
+  }
+}
+
+/* From Uiverse.io by Allyhere */
+#lgout {
+  --clr-font-main: hsla(0 0% 20% / 100);
+  --btn-bg-1: hsla(0 100% 69% / 1);
+  --btn-bg-2: hsla(0 100% 56% / 1);
+  --btn-bg-color: hsla(360 100% 100% / 1);
+  cursor: pointer;
+  padding: 0.9em 1.4em;
+  min-width: 120px;
+  min-height: 44px;
+  font-size: var(--size, 1rem);
+  font-weight: 500;
+  transition: 0.8s;
+  background-size: 280% auto;
+  background-image: linear-gradient(325deg,
+      var(--btn-bg-2) 0%,
+      var(--btn-bg-1) 55%,
+      var(--btn-bg-2) 90%);
+  border: none;
+  border-radius: 20px;
+  color: var(--btn-bg-color);
+  box-shadow: 0px 0px 20px rgba(255, 71, 71, 0.5),
+    0px 5px 5px -1px rgba(233, 58, 58, 0.25),
+    inset 4px 4px 8px rgba(255, 175, 175, 0.5),
+    inset -4px -4px 8px rgba(216, 19, 19, 0.35);
+}
+
+#lgout:hover {
+  background-position: right top;
+}
+
+#lgout:is(:focus, :focus-visible, :active) {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--btn-bg-color), 0 0 0 6px var(--btn-bg-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #lgout {
+    transition: linear;
+  }
+}
+
+@media (max-width: 540px) {
+  .row {
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: inherit;
+    flex-direction: column-reverse;
+  }
+
+  #carouselExampleAutoplaying {
+    margin-left: 10%;
+  }
+}
+
+@media (max-width: 988px) {
+  .row {
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: inherit;
+    flex-direction: column-reverse;
+  }
+
+  #carouselExampleAutoplaying {
+    margin-left: 10%;
+  }
+}
+
+.course-logos-wrapper {
+  padding-top: 50px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: auto;
+  /* Adjust based on icon height */
+}
+
+.course-logos {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: scrollLeft 20s linear infinite;
+  padding-bottom: 90px;
+}
+
+.course-logos img {
+  height: 70px;
+  margin-right: 60px;
+}
+
+.course-logos img.white-bg {
+  background: #fff;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
