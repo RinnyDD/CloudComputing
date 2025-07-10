@@ -54,7 +54,7 @@
             <% courses.forEach(course => { %>
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
                     <div class="card" style="width: 100%; height: auto">
-                        <img src="<%= course.image ? course.image : '/img/placeholder.png' %>" class="card-img-top"
+                        <img src="<%= course.image || '/img/placeholder.png' %>" class="card-img-top"
                             alt="<%= course.title %>" style="height: 200px; object-fit: cover" />
                         <div class="card-body">
                             <h5 class="card-title" style="font-family: 'Poppins', sans-serif; color: white">
@@ -75,7 +75,7 @@
                                 <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#courseModal"
                                     data-title="<%= course.title %>" data-description="<%= course.description %>"
                                     data-price="<%= course.price %>"
-                                    data-image="<%= course.image ? course.image : '/img/placeholder.png' %>">
+                                    data-image="<%= course.image || '/img/placeholder.png' %>">
                                     Free
                                 </button>
                             <% } else { %>
@@ -83,7 +83,7 @@
                                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#courseModal"
                                     data-title="<%= course.title %>" data-description="<%= course.description %>"
                                     data-price="<%= course.price %>"
-                                    data-image="<%= course.image ? course.image : '/img/placeholder.png' %>">
+                                    data-image="<%= course.image || '/img/placeholder.png' %>">
                                     Buy Now
                                 </button>
                             <% } %>

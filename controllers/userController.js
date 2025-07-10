@@ -1,44 +1,42 @@
+const db = require('../models/db');
 const User = require('../models/user');
 
 // Register user
 async function register(req, res) {
   const { firstname, lastname, email, password } = req.body;
   try {
-    const result = await User.registerUser(firstname, lastname, email, password);
+    await User.registerUser(firstname, lastname, email, password);
     res.redirect('/login');
   } catch (error) {
     console.error(error);
-    res.render('register', { // Use res.render() to render the registration page with error messages
-      messages: { error: [error.message] } 
+    res.render('register', {
+      messages: { error: [error.message] },
     });
   }
 }
 
-
+// Login user
 async function login(req, res, next) {
   const { email, password } = req.body;
   try {
     const user = await User.authenticateUser(email, password);
     if (user) {
       req.login(user, (err) => {
-        if (err) {
-          return next(err); // Handle any errors during login
-        }
-        res.redirect('/home'); // Redirect to home if login is successful
+        if (err) return next(err);
+        res.redirect('/home');
       });
     } else {
       req.flash('error', 'Invalid credentials. Please try again.');
-      res.redirect('/login'); // Redirect to login page on failure
+      res.redirect('/login');
     }
   } catch (error) {
     console.error(error);
     req.flash('error', 'An error occurred during login. Please try again.');
-    res.redirect('/login'); // Redirect to login page on error
+    res.redirect('/login');
   }
 }
 
-
-// Home page after login
+// Render home page (after login)
 function home(req, res) {
   if (req.isAuthenticated()) {
     res.render('home', { user: req.user });
@@ -47,26 +45,21 @@ function home(req, res) {
   }
 }
 
+// Logout user and destroy session
 async function logout(req, res, next) {
-  // Log out the user and destroy the session
   req.logout((err) => {
-    if (err) {
-      return next(err); // Handle any logout error
-    }
+    if (err) return next(err);
 
-    // Destroy the session data
     req.session.destroy((err) => {
-      if (err) {
-        return next(err); // Handle any session destruction error
-      }
+      if (err) return next(err);
 
-      // After logging out, redirect to home page with default user data
       res.render('home', { user: { firstname: 'User', email: 'Not logged in' } });
     });
   });
 }
 
-async function getCourses(req, res){
+// View all courses for users
+async function getCourses(req, res) {
   try {
     const [rows] = await db.query('SELECT * FROM courses');
     res.render('usercourse', { courses: rows });
@@ -74,11 +67,12 @@ async function getCourses(req, res){
     console.error('Error fetching courses:', error);
     res.status(500).send('Server Error');
   }
-};
+}
 
+// View courses created or enrolled by the logged-in user
 async function getMyCourses(req, res) {
   try {
-    const userId = req.user.id; // Assuming req.user contains the authenticated user's info
+    const userId = req.user.id; // Assuming req.user has user data
     const [rows] = await db.query('SELECT * FROM courses WHERE user_id = ?', [userId]);
     res.render('mycourses', { courses: rows });
   } catch (error) {
@@ -86,4 +80,15 @@ async function getMyCourses(req, res) {
     res.status(500).send('Server Error');
   }
 }
-module.exports = { register, login, home, logout, getCourses, getMyCourses };
+
+module.exports = {
+  register,
+  login,
+  home,
+  logout,
+  getCourses,
+  getMyCourses,
+};
+// This code handles user registration, login, logout, and fetching courses for users.
+// It uses a User model for database interactions and includes error handling for various operations.
+// It also provides functions to render the home page and user courses, ensuring that the user is authenticated before accessing certain routes.

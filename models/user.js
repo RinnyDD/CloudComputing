@@ -1,12 +1,13 @@
 const mysql = require("mysql2");
 const bcrypt = require("bcryptjs");
+require("dotenv").config(); // Load environment variables from .env file
 
 // Create a connection pool
 const pool = mysql.createPool({
-  host: "database-1.cp0q2myqc6y7.ap-southeast-2.rds.amazonaws.com",
-  user: "admin",
-  password: "Admin168",
-  database: "course",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
 });
 
 const promisePool = pool.promise();

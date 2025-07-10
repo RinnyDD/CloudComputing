@@ -1,12 +1,18 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const courseRoutes = require("./routes/courseRoutes");
 const path = require("path");
 const passport = require("passport");
 const userController = require("./controllers/userController");
 const flash = require("connect-flash");
+// const helmet = require("helmet");
+const rateLimit = require("express-rate-limit");
+
 const app = express();
 const promisePool = require('./models/user').promisePool;
+require("dotenv").config();
+const PORT = process.env.PORT || 3000;
 
 // Middleware for parsing request bodies
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,8 +29,10 @@ app.use(
     resave: false,
     saveUninitialized: false, // Don't save uninitialized sessions
     cookie: {
-      secure: false, // Set to true if you're using HTTPS
-    },
+      secure: process.env.NODE_ENV === "production", // true only in HTTPS
+      httpOnly: true, // prevent access from JS
+      sameSite: "lax", // basic CSRF protection
+    }
   })
 );
 
@@ -32,6 +40,39 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+// app.use(helmet()); // Use Helmet for security
+
+// Rate limiting middleware to prevent brute force attacks
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // Limit to 5 attempts per IP
+  message: "Too many login attempts. Please try again later.",
+});
+
+const helmet = require('helmet');
+
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net"],   // allow inline scripts
+      scriptSrcAttr: ["'unsafe-inline'"],                                   // allow inline event handlers like onclick
+      styleSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net"],  // allow inline styles if you use any
+      imgSrc: [
+        "'self'",
+        "data:",
+        "https://teamnh-course-bucket-168.s3.ap-southeast-2.amazonaws.com",
+        "https://img.icons8.com",
+        "https://cdn.jsdelivr.net",
+        "https://upload.wikimedia.org",
+        "https://teamnh-course-bucket-168.s3.ap-southeast-2.amazonaws.com"
+      ],
+      // add other directives as needed
+    },
+  })
+);
+
 
 // Middleware to pass flash messages to views
 app.use((req, res, next) => {
@@ -61,7 +102,7 @@ app.get("/usercourse", async (req, res) => {
   }
 });
 
-app.get("/usercourse", userController.getCourses);
+
 
 app.get("/aboutus", (req, res) => {
   const user = req.user || { email: "Not logged in" };
@@ -73,7 +114,7 @@ app.get('/coursedetails', (req, res) => {
   res.render('coursedetails');
 });
 
-app.post("/login", userController.login);
+app.post("/login", loginLimiter, userController.login);
 
 // This is useful if you want to use passport.authenticate for your login:
 app.post(
@@ -87,14 +128,6 @@ app.post(
   }
 );
 
-// Home page route (Ensure it's not duplicated)
-// app.get('/home', (req, res) => {
-//   if (req.isAuthenticated()) {
-//     res.render('home', { user: req.user });
-//   } else {
-//     res.redirect('/login');
-//   }
-// });
 app.get("/home", (req, res) => {
   if (req.isAuthenticated()) {
     // Render home with authenticated user data
@@ -105,8 +138,15 @@ app.get("/home", (req, res) => {
   }
 });
 
-
-
+app.get("/", (req, res) => {
+  if (req.isAuthenticated()) {
+    // If the user is authenticated, redirect to home
+    res.redirect("home");
+  } else {
+    // If not authenticated, show the login page
+    res.render("home", { user: { firstname: "User", email: "Not logged in" } });
+  }
+});
 
 // Routes for Google OAuth login
 app.get(
@@ -159,9 +199,11 @@ app.get("/logout", (req, res) => {
   });
 });
 
+app.use("/", courseRoutes); // Use course routes
+
 // Start the server
-app.listen(3000, () => {
-  console.log("Server started on http://localhost:3000/home");
+app.listen(PORT, () => {
+  console.log(`Server started on http://localhost:${PORT}`);
 });
 
 // Passport configuration

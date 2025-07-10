@@ -1,5 +1,4 @@
 const db = require('../models/db');
-const upload = require('../config/multer');
 
 // View all courses
 exports.getCourses = async (req, res) => {
@@ -20,40 +19,36 @@ exports.getCreateForm = (req, res) => {
 // Handle creating a course
 exports.createCourse = async (req, res) => {
   const { title, description, author, price } = req.body;
-  
+
   let image_path = "";
 
-  // Log to check if the image was received
   console.log('File received:', req.file);
 
-  if (req.file) {
-    image_path = `/img/${req.file.filename}`;  // Correct path for the uploaded image
+  if (req.file && req.file.location) {
+    // multerS3 adds the 'location' field containing the full S3 URL
+    image_path = req.file.location;
   } else {
     console.log('No image uploaded');
   }
 
   try {
-    // Check if all required fields are present
     if (!title || !description || !author || !price) {
       return res.status(400).send('All fields are required.');
     }
 
-    // Log the data to be inserted
     console.log('Inserting course data:', { title, description, author, price, image_path });
 
-    // Insert the course into the database
     await db.query(
       'INSERT INTO courses (title, description, author, price, image) VALUES (?, ?, ?, ?, ?)',
       [title, description, author, price, image_path]
     );
 
-    res.redirect('/courses');  // Redirect to the homepage or courses page after successful creation
+    res.redirect('/courses');
   } catch (error) {
     console.error('Error creating course:', error);
     res.status(500).send('Server Error');
   }
 };
-
 
 // Render edit course form
 exports.getEditForm = async (req, res) => {
@@ -70,11 +65,18 @@ exports.getEditForm = async (req, res) => {
 // Handle updating a course
 exports.updateCourse = async (req, res) => {
   const courseId = req.params.id;
-  const { title, description, author, price, image } = req.body;
+  const { title, description, author, price } = req.body;
+
+  let image_path = req.body.image || "";  // Use existing image URL if no new file uploaded
+
+  if (req.file && req.file.location) {
+    image_path = req.file.location;
+  }
+
   try {
     await db.query(
       'UPDATE courses SET title = ?, description = ?, author = ?, price = ?, image = ? WHERE id = ?',
-      [title, description, author, price, image, courseId]
+      [title, description, author, price, image_path, courseId]
     );
     res.redirect('/courses');
   } catch (error) {
@@ -91,6 +93,21 @@ exports.deleteCourse = async (req, res) => {
     res.redirect('/courses');
   } catch (error) {
     console.error('Error deleting course:', error);
+    res.status(500).send('Server Error');
+  }
+};
+
+// View a specific course by ID
+exports.getCourseById = async (req, res) => {
+  const courseId = req.params.id;
+  try {
+    const [rows] = await db.query('SELECT * FROM courses WHERE id = ?', [courseId]);
+    if (rows.length === 0) {
+      return res.status(404).send('Course not found');
+    }
+    res.render('courseDetails', { course: rows[0] });
+  } catch (error) {
+    console.error('Error fetching course:', error);
     res.status(500).send('Server Error');
   }
 };
