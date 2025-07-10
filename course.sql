@@ -72,6 +72,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `googleId`, `facebookId`) VALUES
 (1, 'Theng', 'Norrint', 'norrint123@gmail.com', '123', NULL, NULL),
+(2, 'Theng', 'Norrint', 'norrint123@gmail.com', '123', NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
