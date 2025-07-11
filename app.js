@@ -53,42 +53,15 @@ const loginLimiter = rateLimit({
 const helmet = require('helmet');
 
 
-app.use(
-  helmet.contentSecurityPolicy({
+app.use(helmet.contentSecurityPolicy({
   directives: {
-    defaultSrc: ["'self'"],
-    scriptSrc: [
-      "'self'",
-      "'unsafe-inline'",
-      "https://cdn.jsdelivr.net",
-      "https://cdn.lordicon.com",           // For <lord-icon>
-      "https://me.kis.v2.scr.kaspersky-labs.com"  // Optional (Kaspersky browser extension)
-    ],
-    scriptSrcAttr: ["'unsafe-inline'"],
-    styleSrc: [
-      "'self'",
-      "'unsafe-inline'",
-      "https://cdn.jsdelivr.net",
-      "https://fonts.googleapis.com"         // For Google Fonts
-    ],
-    fontSrc: [
-      "'self'",
-      "https://fonts.gstatic.com"           // For Google Fonts
-    ],
-    imgSrc: [
-      "'self'",
-      "data:",
-      "https://teamnh-course-bucket-168.s3.ap-southeast-2.amazonaws.com",
-      "https://img.icons8.com",
-      "https://cdn.jsdelivr.net",
-      "https://upload.wikimedia.org",
-      "https://github.com"
-    ],
-    objectSrc: ["'none'"],
-    upgradeInsecureRequests: [],
-  },
- })
-);
+    defaultSrc: ["*"],
+    scriptSrc: ["*"],
+    styleSrc: ["*"],
+    imgSrc: ["* data:"],
+    objectSrc: ["'none'"]
+  }
+}));
 
 
 // Middleware to pass flash messages to views
