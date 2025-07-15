@@ -6,8 +6,7 @@ const path = require("path");
 const passport = require("passport");
 const userController = require("./controllers/userController");
 const flash = require("connect-flash");
-// const helmet = require("helmet");
-const rateLimit = require("express-rate-limit");
+
 
 const app = express();
 const promisePool = require('./models/user').promisePool;
@@ -29,11 +28,6 @@ app.use(
     secret: "secret-key",
     resave: false,
     saveUninitialized: false, // Don't save uninitialized sessions
-    cookie: {
-      secure: process.env.NODE_ENV === "production", // true only in HTTPS
-      httpOnly: true, // prevent access from JS
-      sameSite: "lax", // basic CSRF protection
-    }
   })
 );
 
@@ -42,26 +36,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 // app.use(helmet()); // Use Helmet for security
-
-// Rate limiting middleware to prevent brute force attacks
-const loginLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // Limit to 5 attempts per IP
-  message: "Too many login attempts. Please try again later.",
-});
-
-const helmet = require('helmet');
-
-
-app.use(helmet.contentSecurityPolicy({
-  directives: {
-    defaultSrc: ["*"],
-    scriptSrc: ["*"],
-    styleSrc: ["*"],
-    imgSrc: ["* data:"],
-    objectSrc: ["'none'"]
-  }
-}));
 
 
 // Middleware to pass flash messages to views
