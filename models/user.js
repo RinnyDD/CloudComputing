@@ -8,6 +8,9 @@ const pool = mysql.createPool({
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
 });
 
 const promisePool = pool.promise();
@@ -47,7 +50,7 @@ async function registerUser(
 
     return result;
   } catch (error) {
-    console.error("Error during registration:", error); // Debugging log
+    console.error("Error during registration:", error);
     throw error;
   }
 }
@@ -62,12 +65,12 @@ async function authenticateUser(email, password) {
 
     if (rows.length > 0) {
       const user = rows[0];
-      console.log("User fetched from DB:", user); // Debugging log
+      console.log("User fetched from DB:", user);
 
       // Check password
       if (password) {
         const match = await bcrypt.compare(password, user.password);
-        console.log("Password comparison result:", match); // Debugging log
+        console.log("Password comparison result:", match);
         if (match) {
           return user; // Successful login
         }
@@ -76,7 +79,7 @@ async function authenticateUser(email, password) {
 
     return null; // Invalid credentials
   } catch (error) {
-    console.error("Error during authentication:", error); // Debugging log
+    console.error("Error during authentication:", error);
     throw error;
   }
 }
@@ -101,9 +104,9 @@ async function findUserByOAuthId(googleId, facebookId) {
 
     const [rows] = await promisePool.query(query, params);
 
-    return rows.length > 0 ? rows[0] : null; // Return user if found, otherwise null
+    return rows.length > 0 ? rows[0] : null;
   } catch (error) {
-    console.error("Error during OAuth user lookup:", error); // Debugging log
+    console.error("Error during OAuth user lookup:", error);
     throw error;
   }
 }
@@ -114,3 +117,12 @@ module.exports = {
   findUserByOAuthId,
   promisePool,
 };
+
+// === Connection Test - remove or comment out after testing ===
+promisePool.query("SELECT 1 + 1 AS solution")
+  .then(([rows]) => {
+    console.log("DB Connection Test Result:", rows[0].solution);
+  })
+  .catch((err) => {
+    console.error("DB Connection Test Failed:", err);
+  });
