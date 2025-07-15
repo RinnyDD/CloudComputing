@@ -78,7 +78,7 @@ app.get('/coursedetails', (req, res) => {
   res.render('coursedetails');
 });
 
-app.post("/login", loginLimiter, userController.login);
+app.post("/login", userController.login);
 
 // This is useful if you want to use passport.authenticate for your login:
 app.post(
