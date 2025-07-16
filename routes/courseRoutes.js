@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const courseController = require('../controllers/courseController');
 const upload = require('../config/multerS3'); // multer configuration for file uploads
-require('dotenv').config();
+require("dotenv").config({ path: __dirname + "/../.env" });
 
 // User credentials
 const userDatabase = {

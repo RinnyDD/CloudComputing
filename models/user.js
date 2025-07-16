@@ -1,6 +1,6 @@
 const mysql = require("mysql2");
 const bcrypt = require("bcryptjs");
-require("dotenv").config(); // Load environment variables from .env file
+require("dotenv").config({ path: __dirname + "/../.env" });
 
 // Create a connection pool
 const pool = mysql.createPool({
@@ -8,6 +8,7 @@ const pool = mysql.createPool({
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
+  port: process.env.DB_PORT ? Number(process.env.DB_PORT) : 3306,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,

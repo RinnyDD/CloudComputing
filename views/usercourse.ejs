@@ -60,8 +60,12 @@
                             <h5 class="card-title" style="font-family: 'Poppins', sans-serif; color: white">
                                 <%= course.title %>
                             </h5>
+                            <% const maxLength = 100; %>
                             <p class="card-text">
-                                <%= course.description %>
+                                <%= course.description.length > maxLength 
+                                        ? course.description.slice(0, maxLength) + '...' 
+                                        : course.description 
+                                %>
                             </p>
                             <p class="card-text">
                                 <strong>Author:</strong>
